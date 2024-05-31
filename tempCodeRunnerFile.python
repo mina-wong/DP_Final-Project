@@ -1,0 +1,75 @@
+import pandas as pd
+from bokeh.plotting import figure, show, output_file
+from bokeh.models import CustomJS, ColumnDataSource, Select
+from bokeh.layouts import column
+
+# Set dates and regions
+start_year = 2017
+end_year = 2023
+region_codes = ["EC", "BY", "TN", "UY", "VN"]
+region_wb = {"EC": "ECU", "BY": "BLR", "TN": "TUN", "UY": "URY", "VN": "VNM"}
+region_names = {"EC": "Ecuador", "BY": "Belarus", "TN": "Tunicia", "UY": "Uruguay", "VN": "Vietnam"}
+region_colors = {"EC": "Blue", "BY": "Green", "TN": "Purple", "UY": "Brown", "VN": "Red"}
+colors_comp = ['red', 'blue', 'green', 'orange', 'purple']
+components = ["Efficiency", "Diversification", "Quality", "Internationalization", "Time"]
+hover_alpha = 1.0
+nonhover_alpha = 0.75
+
+# Fetch data
+data = [
+    {"Region": "ECU", "Efficiency": 90, "Diversification": 80, "Quality": 85, "Internationalization": 75, "Time": 85, "Year": 2023},
+    {"Region": "BLR", "Efficiency": 75, "Diversification": 70, "Quality": 80, "Internationalization": 65, "Time": 75, "Year": 2023},
+    {"Region": "TUN", "Efficiency": 80, "Diversification": 75, "Quality": 75, "Internationalization": 70, "Time": 80, "Year": 2023},
+    {"Region": "URY", "Efficiency": 85, "Diversification": 80, "Quality": 80, "Internationalization": 75, "Time": 85, "Year": 2023},
+    {"Region": "VNM", "Efficiency": 90, "Diversification": 85, "Quality": 85, "Internationalization": 80, "Time": 90, "Year": 2023}
+]
+
+# Convert list of dictionaries to pandas DataFrame
+df = pd.DataFrame(data)
+
+# Create a Bokeh plot
+plot = figure(
+    x_range=list(region_names.values()),
+    height=350,
+    title="IPI indicators for 2023",
+    toolbar_location=None,
+    tools="hover",
+    tooltips="$name: @$name"
+)
+
+# Create a ColumnDataSource
+source = ColumnDataSource(df)
+
+# Create bar graph
+bars = plot.vbar_stack(
+    components,
+    x="Region",
+    width=0.9,
+    color=colors_comp,
+    source=source,
+    alpha=nonhover_alpha,
+    hover_alpha=hover_alpha
+)
+
+# Create a Select widget
+year_select = Select(
+    title="Year: ",
+    options=[str(y) for y in range(start_year, end_year + 1)],
+    value=str(end_year)
+)
+
+# Add JSCustom callback to update the plot when the year changes
+callback = CustomJS(args=dict(source=source, plot=plot), code="""
+    const year = this.parent.value;
+    const filtered_data = source.data.filter(d => d.Year === parseInt(year));
+    source.data = filtered_data;
+    plot.title.text = `IPI indicators for ${year}`;
+    source.change.emit();
+""")
+
+year_select.js_on_change('value', callback)
+
+# Add the plot and the select widget to the document
+layout = column(year_select, plot)
+output_file("bokeh_plot_with_jscustom.html")
+show(layout)

@@ -1,0 +1,102 @@
+Date of entry: 30-May-2024
+
+What I’ve worked on: 
+    - Creating an interactive stacked bar graph in bokeh
+
+What problems I encountered: 
+    - Can't display in jupyter
+    - Had to use column source data to update graph source (instead of redrawing graph)
+
+What I learned: 
+    - Select widget in Bokeh
+    - Using Bokeh servers to run python files
+
+Which resources did I use: 
+    - https://ipywidgets.readthedocs.io/en/latest/examples/Widget%20List.html
+    - Scientific Programming Bokeh guide notebooks
+
+--
+
+Date of entry: 29-May-2024
+
+What I’ve worked on: 
+    - Creating a radar graph using matplotlib
+
+What problems I encountered: 
+    - Legend was covering graph data
+    - Bokeh has no radar graph
+    - When indicator values are very different can be hard to see the lower values
+
+What I learned:
+    - Creating a legend object to place next to the graph 
+    - Click policies to make legends (the graph) interactive
+    - Using Matplotlib widgets to make interactive graphs (sliders, dropdown lists)
+    
+Which resources did I use: 
+    - https://docs.bokeh.org/en/2.4.3/docs/user_guide/annotations.html#:~:text=The%20easiest%20way%20to%20add,access%20the%20Legend%20object%20directly.
+    - https://towardsdatascience.com/how-to-create-a-radar-chart-in-python-36b9ebaa7a64
+
+--
+
+Date of entry: 25-May-2024
+
+What I’ve worked on: 
+    - IPI data calculation
+    - Data visualisation using Bokeh
+    - How to use tooltips to show data on hover
+
+What problems I encountered: 
+    - Mostly just figuring out the correct syntax and usage of the Bokeh functions
+
+What I learned: 
+    - How to make Bokeh line graphs
+    - How to make Bokeh stacked bar graphs
+    - Using loops to plot different lines to lessen code repetition
+
+Which resources did I use: 
+    - https://docs.bokeh.org/en/2.4.3/docs/gallery/bar_stacked.html
+    - Scientific Programming Bokeh guide notebooks
+
+---
+
+Date of entry: February 2024
+
+What I’ve worked on: 
+    - Extracting specific data needed for calculating the index from the raw json data
+    - Cleaning and attaching said data to a csv for further research use
+
+What problems I encountered: 
+    - Dealing with occasionally inconsistent json formatting (missing sections, etc.)
+    - Repeated references & typos in the lists of patent citations
+
+What I learned: 
+    - Dealt with typos in strings by normalising and using Levenshtein to calculate similarity
+
+Which resources did I use: 
+    - https://www.w3schools.com/python/python_try_except.asp
+    - https://docs.python.org/3/tutorial/errors.html
+    - https://yassineelkhal.medium.com/the-complete-guide-to-string-similarity-algorithms-1290ad07c6b7
+    - https://pypi.org/project/python-Levenshtein/
+
+---
+
+Date of entry: January 2024
+
+What I’ve worked on: 
+    - Importing the data from espacenet as json
+
+What problems I encountered: 
+    - The database has no 'download' function
+    - The webpage itself has no easy access to all the information (i.e. beautiful soup wasn't 
+      the most effective solution)
+    - Dataset can be very large for certain regions
+    - Had to be mindful of a download limit; had to adjust the timeframe I was downloading per request
+
+What I learned: 
+    - python requests and API calls
+    - try & except blocks to deal with unsuccessful API requests
+    - pickle file type worked much faster than csv for saving large amounts of data for further cleaning
+
+Which resources did I use:
+    - https://www.youtube.com/watch?v=DqtlR0y0suo&t=68s
+    - https://www.emerald.com/insight/content/doi/10.1108/MD-05-2020-0545/full/pdf

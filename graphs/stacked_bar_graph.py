@@ -8,10 +8,14 @@ from bokeh.models.widgets import Select
 from bokeh.models import ColumnDataSource, Legend, LegendItem
 
 """
-    
-"""
+This file creates an interactive Bokeh bar graph showing the IPI and its components' scores 
+for the 5 regions for a certain year. A selection feature allows you to select the displayed year.
 
-# Run bokeh serve --show graphs/stacked_bar_graph.py
+To view, run  
+    bokeh serve --show graphs/stacked_bar_graph.py
+in terminal
+
+"""
 
 def createLegend(renderers, labels):
     """ 

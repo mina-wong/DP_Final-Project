@@ -8,7 +8,7 @@ How has innovation changed between 2017-2023 in various countries?
 Additionally, which region had the highest innovation overall? Which region has the highest score in each component? Was there any effect on innovation in these regions after Covid-19? 
 
 ### Overview
-This project aims to analyze patent data and extract useful datapoints to build an innovation index. It will additionally make interactive plots to understand and compare the development of innovation for different countries between 2000 and 2023.
+This project aims to analyze patent data and extract useful datapoints to build an innovation index. It will additionally make interactive plots to understand and compare the development of innovation for different countries between 2017 and 2023.
 
 Countries selected: 
  - Ecuador (EC)
@@ -51,3 +51,11 @@ Takes the calculated IPI indicators and creates 3 visuals:
     1. Multiple line graph to track changes in overall IPI over time in the 5 regions
     2. Stacked bar graph to visualise changes in overall IPI and its components given a certain year. Includes an out-of-notebook extension with interactive year selection feature. 
     3. Radar graph for clearer comparison of the components of the index. Includes interactive widgets to select which region and year is being displayed. Also includes a zoom bar to scroll in and out of the graph
+
+# Findings
+
+Overall IPI rankings were fairly consistent over 2017-2023, from highest to lowest being Uruguay, Vietnam, Belarus, Tunicia, and Ecuador, in that order. However in 2023, Belarus' IPI score jumped significantly, largely due to an increase in the Quality indicator. 
+
+Overall, innovation seems to fall during this time period. The fall is most significant for Vietnam, it's overall IPI score in 2023 being half of that in 2017. 
+
+There seems to be no significant change in IPI patterns post-Covid (in the years following 2019). 
